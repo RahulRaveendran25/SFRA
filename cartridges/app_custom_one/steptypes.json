@@ -1,0 +1,56 @@
+{
+    "step-types": {
+        "script-module-step": [
+            {
+                "@type-id": "custom.OrderExport",
+                "@supports-site-context": true,
+                "@supports-organization-context": false,
+                "transactional": "false",
+                "module": "app_custom_one/cartridge/scripts/job/orderExport.js",
+                "function": "orderExportCSV",
+                "parameters": {
+                    "parameter": [
+                        {
+                            "@name": "customFileName",
+                            "@type": "string",
+                            "@required": "false",
+                            "description": "Name of the file that is to be generated",
+                            "min-length": "10",
+                            "max-length": "50"
+                        },
+                        {
+                            "@name": "startDate",
+                            "@type": "datetime-string",
+                            "@required": "true",
+                            "@target-type": "date",
+                            "description": "Order search start date"
+                        },
+                        {
+                            "@name": "endDate",
+                            "@type": "datetime-string",
+                            "@required": "true",
+                            "@target-type": "date",
+                            "description": "Order search end date"
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "OK",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
