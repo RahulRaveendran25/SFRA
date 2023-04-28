@@ -50,6 +50,50 @@
                         }
                     ]
                 }
+            },
+            {
+                "@type-id": "custom.customObjectExport",
+                "@supports-site-context": true,
+                "@supports-organization-context": false,
+                "transactional": "false",
+                "module": "app_custom_one/cartridge/scripts/job/customObjectExport.js",
+                "function": "execute",
+                "parameters": {
+                    "parameter": [
+                        {
+                            "@name": "customFileName",
+                            "@type": "string",
+                            "@required": "false",
+                            "description": "Name of the file that is to be generated",
+                            "min-length": "10",
+                            "max-length": "50"
+                        },
+                        {
+                            "@name": "ObjectType",
+                            "@type": "string",
+                            "@required": "true",
+                            "description": "Type of object to be searched",
+                            "min-length" : "1",
+                            "max-length" : "50"
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "OK",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
             }
         ]
     }

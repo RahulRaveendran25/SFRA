@@ -1,11 +1,11 @@
 <isdecorate template="common/layout/page">
     <isscript>
         var assets = require('*/cartridge/scripts/assets.js');
-        assets.addJs('/js/subscription.js');
+        assets.addJs('/js/subsctription.js');
         assets.addCss('/css/contactUs.css');
     </isscript>
-
-    <div class="hero slant-down contact-us-bannerone">
+   
+    <div class="hero slant-down contact-us-banner">
         <h1 class="page-title">${Resource.msg('title.subscribe.page', 'subscribe', null)}</h1>
     </div>
 
@@ -14,7 +14,7 @@
             <div class="col-sm-8 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <form action="${pdict.actionUrl}" class="contact-us" method="POST" name="contact-us">
+                        <form action="${pdict.actionUrl}" class="subscribe" method="POST" name="subscribe">
                             <!--- contact us first name, last name --->
                             <div class="row contact-us-name">
                                 <div class="col-sm-6">

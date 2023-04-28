@@ -10,7 +10,6 @@ function displayMessage(data, button) {
     var status;
     if (data.success) {
         status = 'alert-success';
-        alert("This is an alert message!");
     } else {
         status = 'alert-danger';
     }
@@ -31,10 +30,10 @@ function displayMessage(data, button) {
 
 module.exports = {
     subscribeContact: function () {
-        $('form.contact-us').submit(function (e) {
+        $('form.subscribe').submit(function (e) {
             e.preventDefault();
             var form = $(this);
-            var button = $('.subscribe-contact-us');
+            var button = $('.subscribe-contact-us'); 
             var url = form.attr('action');
 
             $.spinner().start();

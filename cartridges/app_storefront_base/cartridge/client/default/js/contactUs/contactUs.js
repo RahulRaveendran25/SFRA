@@ -10,6 +10,7 @@ function displayMessage(data, button) {
     var status;
     if (data.success) {
         status = 'alert-success';
+        alert("This is an alert message!");
     } else {
         status = 'alert-danger';
     }
@@ -37,6 +38,7 @@ module.exports = {
             var url = form.attr('action');
 
             $.spinner().start();
+            alert("This is an alert message!");
             button.attr('disabled', true);
             $.ajax({
                 url: url,

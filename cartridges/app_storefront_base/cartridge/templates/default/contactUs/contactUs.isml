@@ -16,6 +16,7 @@
                     <div class="card-body">
                         <form action="${pdict.actionUrl}" class="contact-us" method="POST" name="contact-us">
                             <!--- contact us first name, last name --->
+                            ${pdict.actionUrl}
                             <div class="row contact-us-name">
                                 <div class="col-sm-6">
                                     <div class="form-group required">

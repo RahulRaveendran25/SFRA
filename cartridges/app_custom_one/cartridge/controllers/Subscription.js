@@ -28,14 +28,27 @@ server.get('Subscribe', server.middleware.https, function (req, res, next) {
 
 server.post('Submit', server.middleware.https, function (req, res, next) {
     var Resource = require('dw/web/Resource');
-    var hooksHelper = require('*/cartridge/scripts/helpers/hooks');
     var emailHelper = require('*/cartridge/scripts/helpers/emailHelpers');
+    var CustomObjectMgr= require('dw/object/CustomObjectMgr');
+    var Transaction = require('dw/system/Transaction');
+
 
     var myForm = req.form;
     var isValidEmailid = emailHelper.validateEmail(myForm.contactEmail);
+
     if (isValidEmailid) {
-        var contactDetails = [myForm.contactFirstName, myForm.contactLastName, myForm.contactEmail, myForm.contactTopic, myForm.contactComment];
-        hooksHelper('app.contactUs.subscribe', 'subscribe', contactDetails, function () {});
+        var getCustomObject = CustomObjectMgr.getCustomObject('emailID', myForm.contactEmail);
+        Transaction.wrap(function () {
+            var myForm = req.form;
+            if (getCustomObject === null) {
+                getCustomObject = CustomObjectMgr.createCustomObject('emailID', myForm.contactEmail);
+                getCustomObject.custom.firstName = myForm.contactFirstName;
+                getCustomObject.custom.lastName = myForm.contactLastName;
+            } else {
+                getCustomObject.custom.firstName = myForm.contactFirstName;
+                getCustomObject.custom.lastName = myForm.contactLastName;
+            }
+        });
 
         res.json({
             success: true,
